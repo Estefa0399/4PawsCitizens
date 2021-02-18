@@ -24,47 +24,38 @@ public class Archivo {
 				e.printStackTrace();
 			}
 		}
+	
 	}
 
-	public void escribirEnArchivo(ArrayList<Pet> alPet) {
-		try {
-			System.out.println(filePet);
-			out = new ObjectOutputStream(new FileOutputStream(filePet));
-			out.writeObject(alPet);
-			out.close();
-		} catch (FileNotFoundException e) {
 
-			e.printStackTrace();
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-
-		}
-	}
-
-	public ArrayList<Pet> leerArchivo() {
+	public  ArrayList<Pet> readFile() {
 
 		ArrayList<Pet> alPet = new ArrayList<Pet>();
-		if (filePet.length() != 0) {
-			try {
-				in = new ObjectInputStream(new FileInputStream(filePet));
-				alPet = (ArrayList<Pet>) in.readObject();
-			} catch (FileNotFoundException e) {
+		String linea = "";
+		String cadena = "";
 
-				e.printStackTrace();
 
-			} catch (IOException e) {
-
-				e.printStackTrace();
-
-			} catch (ClassNotFoundException e) {
-
-				e.printStackTrace();
-
+		try {
+			FileReader fr = new FileReader(filePet); // fr-> Crea el flujo desde f
+			BufferedReader br = new BufferedReader(fr); // br ->permite la lectura
+			linea = br.readLine(); // linea toma el valor de la primera linea leída
+			while (linea != null) { // mientras haya datos por leer en el archivo
+				String [] partes=linea.split(";");
+				try {
+					
+					linea = br.readLine(); // leer el valor de la siguiente linea
+				}catch( NumberFormatException e) {
+					
+					linea = br.readLine(); // leer el valor de la siguiente linea
+				}
+				
 			}
+			fr.close();
+		} catch (IOException e) {
+			return null;
 		}
 		return alPet;
 	}
+
 
 }
