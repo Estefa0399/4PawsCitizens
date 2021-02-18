@@ -3,21 +3,22 @@ package co.edu.unbosque.FourPawsCitizens.view;
 import java.util.Scanner;
 
 public class View {
-	private Scanner leer;
+	private Scanner read;
 
 	public View() {
-		leer = new Scanner(System.in);
+		read = new Scanner(System.in);
 	}
 
-	public void imprimirMensaje(String m) {
+	public void printMessage(String m) {
 		System.out.println(m);
 	}
 
-	public String capturarDato(String m) {
+	public String captureData(String m) {
 		String resultado = "";
-		m = leer.nextLine();
+		m = read.nextLine();
 		resultado = m;
 		return resultado;
 
 	}
 }
+
