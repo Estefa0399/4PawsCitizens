@@ -6,12 +6,19 @@ public class Manager {
 
 	private PetDAO petDao;
 	private Pet pet;
+	private Archivo file;
 	
 	public Manager() {
 		petDao = new PetDAO();
+		file = new Archivo();
 	}
-	
+	public void generatePet() {
+		for(int i=0 ;file.readFile().size()<=i;i++ ) {
+			
+		}
+	}
 	public String assignID () {
+		
 		return"El proceso de asignación de ids ha finalizado";
 	}
 	
