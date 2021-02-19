@@ -127,7 +127,7 @@ public class Manager {
 
 		return aux;
 	}
-
+//prueba
 	public String countBySpecies(String species) {
 		int number = 0;
 
