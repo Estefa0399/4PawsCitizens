@@ -70,15 +70,35 @@ public class Manager {
 			String ms = "" + alPet.get(i).getMicrochip();
 			ms = ms.substring(ms.length() - 3);
 			aux = ms + "-";
-			String sp = (alPet.get(i).getSpecies()).substring(0, 1);
+			String sp = (alPet.get(i).getSpecies()).substring(0, 1).toUpperCase();
 			aux = aux + sp;
-			alPet.get(i).getSex();
-			alPet.get(i).getSize();
-			alPet.get(i).isPotentiallyDangerous();
-			alPet.get(i).getNeighborhood();
+			String se = (alPet.get(i).getSex()).substring(0, 1).toUpperCase();
+			aux = aux + se;
+			String si;
+			if (alPet.get(i).getSize().equals("MINIATURA")) {
+				si = (alPet.get(i).getSize()).substring(0, 2).toUpperCase();
+			} else {
+				si = (alPet.get(i).getSize()).substring(0, 1).toUpperCase();
+			}
+			aux = aux + si;
+			char pd;
+			if (alPet.get(i).isPotentiallyDangerous() == true) {
+				pd = 'T';
+			} else {
+				pd = 'F';
+			}
+			aux = aux + pd + "-" + alPet.get(i).getNeighborhood().toUpperCase();
+
+			if (this.verificateID(aux) == true) {
+				ms = "" + alPet.get(i).getMicrochip();
+				ms = ms.substring(ms.length() - 4);
+				aux = ms + "-" + sp + se + si + pd + "-" + alPet.get(i).getNeighborhood().toUpperCase();
+			}
+
+			alPet.get(i).setId(aux);
 		}
 
-		return "El proceso de asignación de ids ha finalizado";
+		return "El proceso de asignación de ID's ha finalizado";
 	}
 
 	public boolean verificateID(String id) {
@@ -92,16 +112,109 @@ public class Manager {
 	}
 
 	public String findByMicrochip(long microchip) {
-		return "";
+		String aux = "";
+
+		if (!alPet.isEmpty()) {
+			for (int i = 0; i < alPet.size(); i++) {
+				if (alPet.get(i).getMicrochip() == microchip) {
+					aux = "ID: " + alPet.get(i).getId() + "\n" + "Species: " + alPet.get(i).getSpecies() + "\n"
+							+ "Gender: " + alPet.get(i).getSex() + "\n" + "Size: " + alPet.get(i).getSize() + "\n"
+							+ "Potentially Dangerous: " + alPet.get(i).isPotentiallyDangerous() + "\n"
+							+ "Neighborhood: " + alPet.get(i).getNeighborhood();
+				}
+			}
+		}
+
+		return aux;
 	}
 
 	public String countBySpecies(String species) {
-		return "“El número de animales de la especie " + species + "es:";
+		int number = 0;
+
+		for (int i = 0; i < alPet.size(); i++) {
+			if (alPet.get(i).getSpecies() == species) {
+
+				number++;
+
+			}
+		}
+
+		return "“El número de animales de la especie " + species + " es: " + number;
 
 	}
 
-	public String findBypotentDangerousInNeighborhood() {
-		return "";
+	public String findBypotentDangerousInNeighborhood(int n, String position, String neighborhood) {
+		String aux = "";
+		ArrayList<Pet> alNeighborhood = new ArrayList();
+		ArrayList<Pet> alDangerous = new ArrayList();
+
+		for (int i = 0; i < alPet.size(); i++) {
+			if (alPet.get(i).getNeighborhood() == neighborhood) {
+				alNeighborhood.add(alPet.get(i));
+			}
+		}
+		for (int i = 0; i < alNeighborhood.size(); i++) {
+			if (alNeighborhood.get(i).isPotentiallyDangerous() == true) {
+				alDangerous.add(alPet.get(i));
+			}
+		}
+
+		switch (position) {
+		case "TOP":
+			for (int i = 0; i < n; i++) {
+				aux = aux + "ID: " + alDangerous.get(i).getId() + "\n" + "Species: " + alDangerous.get(i).getSpecies()
+						+ "\n" + "Gender: " + alDangerous.get(i).getSex() + "\n" + "Size: "
+						+ alDangerous.get(i).getSize() + "\n" + "Potentially Dangerous: "
+						+ alDangerous.get(i).isPotentiallyDangerous() + "\n" + "Neighborhood: "
+						+ alDangerous.get(i).getNeighborhood() + "\n" + "--------------------" + "\n";
+			}
+			break;
+
+		case "LAST":
+			for (int i = n; n > i; i--) {
+				aux = aux + "ID: " + alDangerous.get(i).getId() + "\n" + "Species: " + alDangerous.get(i).getSpecies()
+						+ "\n" + "Gender: " + alDangerous.get(i).getSex() + "\n" + "Size: "
+						+ alDangerous.get(i).getSize() + "\n" + "Potentially Dangerous: "
+						+ alDangerous.get(i).isPotentiallyDangerous() + "\n" + "Neighborhood: "
+						+ alDangerous.get(i).getNeighborhood() + "\n" + "--------------------" + "\n";
+			}
+		}
+
+		return aux;
+	}
+
+	public String findByMultipleFields(String sex, String species, String size, String potentDangerous) {
+		String aux1 = "";
+		String aux2 = "";
+
+		String sp = (species).substring(0, 1).toUpperCase();
+		aux1 = aux1 + sp;
+		String se = (sex).substring(0, 1).toUpperCase();
+		aux1 = aux1 + se;
+		String si;
+		if (size.toUpperCase().equals("MINIATURA")) {
+			si = (size).substring(0, 2).toUpperCase();
+		} else {
+			si = (size).substring(0, 1).toUpperCase();
+		}
+		aux1 = aux1 + si;
+		char pd = 'a';
+		if (potentDangerous.toUpperCase().equals("SI")) {
+			pd = 'T';
+		} else if (potentDangerous.toUpperCase().equals("NO")) {
+			pd = 'F';
+		}
+		aux1 = aux1 + pd;
+
+		for (int i = 0; i < alPet.size(); i++) {
+			String id = alPet.get(i).getId();
+			if (id.substring(4, 9).equals(aux1)) {
+
+				aux2 = aux2 + alPet.get(i).getId() + "\n";
+			}
+		}
+
+		return aux2;
 	}
 
 }
