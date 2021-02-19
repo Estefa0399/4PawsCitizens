@@ -2,21 +2,25 @@ package co.edu.unbosque.FourPawsCitizens.model;
 
 public class Pet {
 
-	private String id = "NO_ID";
+	private String id;
 	private long microchip;
 	private String species;
-	private String gender;
+	private String sex;
 	private String size;
 	private boolean potentiallyDangerous;
 	private String neighborhood;
 
-	public Pet(String pId, long pMicrochip, String pSpecies, String pGender, String pSize,
-			boolean pPotentiallyDangerous, String pNeighborhood) {
+	public Pet() {
+
+	}
+
+	public Pet(String pId, long pMicrochip, String pSpecies, String pSex, String pSize, boolean pPotentiallyDangerous,
+			String pNeighborhood) {
 
 		this.id = pId;
 		this.microchip = pMicrochip;
 		this.species = pSpecies;
-		this.gender = pGender;
+		this.sex = pSex;
 		this.size = pSize;
 		this.potentiallyDangerous = pPotentiallyDangerous;
 		this.neighborhood = pNeighborhood;
@@ -66,17 +70,17 @@ public class Pet {
 	}
 
 	/**
-	 * @return the gender
+	 * @return the sex
 	 */
-	public String getGender() {
-		return gender;
+	public String getSex() {
+		return sex;
 	}
 
 	/**
-	 * @param gender the gender to set
+	 * @param sex the sex to set
 	 */
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	/**
