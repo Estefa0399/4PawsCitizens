@@ -1,7 +1,7 @@
 package co.edu.unbosque.FourPawsCitizens.controller;
 
-import co.edu.unbosque.FourPawsCitizens.model.Manager;
-import co.edu.unbosque.FourPawsCitizens.view.View;
+import co.edu.unbosque.FourPawsCitizens.model.persistence.*;
+import co.edu.unbosque.FourPawsCitizens.view.*;
 
 public class Controller {
 	private Manager model;
