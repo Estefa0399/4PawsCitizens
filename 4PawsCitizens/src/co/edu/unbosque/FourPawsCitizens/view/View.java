@@ -37,7 +37,7 @@ public class View {
 		return resultado;
 
 	}
-
+//prueba
 
 	public void showMenu() {
 		int option;
