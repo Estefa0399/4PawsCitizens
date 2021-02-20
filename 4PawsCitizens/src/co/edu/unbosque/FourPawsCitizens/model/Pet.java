@@ -125,4 +125,10 @@ public class Pet {
 		this.neighborhood = neighborhood;
 	}
 
+	@Override
+	public String toString() {
+		return "Pet [id=" + id + ", microchip=" + microchip + ", species=" + species + ", sex=" + sex + ", size=" + size
+				+ ", potentiallyDangerous=" + potentiallyDangerous + ", neighborhood=" + neighborhood + "]";
+	}
+
 }

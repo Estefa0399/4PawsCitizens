@@ -112,22 +112,19 @@ public class Manager {
 	}
 
 	public String findByMicrochip(long microchip) {
-		String aux = "";
+		String aux = "Pet not found";
 
 		if (!alPet.isEmpty()) {
 			for (int i = 0; i < alPet.size(); i++) {
 				if (alPet.get(i).getMicrochip() == microchip) {
-					aux = "ID: " + alPet.get(i).getId() + "\n" + "Species: " + alPet.get(i).getSpecies() + "\n"
-							+ "Gender: " + alPet.get(i).getSex() + "\n" + "Size: " + alPet.get(i).getSize() + "\n"
-							+ "Potentially Dangerous: " + alPet.get(i).isPotentiallyDangerous() + "\n"
-							+ "Neighborhood: " + alPet.get(i).getNeighborhood();
+					aux = alPet.get(i).toString();
 				}
 			}
 		}
 
 		return aux;
 	}
-//prueba
+
 	public String countBySpecies(String species) {
 		int number = 0;
 
