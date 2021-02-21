@@ -16,6 +16,13 @@ public class Manager {
 		alPet = new ArrayList<Pet>();
 	}
 
+	public String uploadData() {
+		
+		file.readFile();
+		
+		return "“El proceso de carga del archivo ha finalizado";
+	}
+
 	public void createPet(String pId, long pMicrochip, String pSpecies, String pSex, String pSize,
 			boolean pPotentiallyDangerous, String pNeighborhood) {
 
@@ -146,7 +153,7 @@ public class Manager {
 		ArrayList<Pet> alDangerous = new ArrayList();
 
 		for (int i = 0; i < alPet.size(); i++) {
-			if (alPet.get(i).getNeighborhood() == neighborhood) {
+			if (alPet.get(i).getNeighborhood().toUpperCase() == neighborhood.toUpperCase()) {
 				alNeighborhood.add(alPet.get(i));
 			}
 		}

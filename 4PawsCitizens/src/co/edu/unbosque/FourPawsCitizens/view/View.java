@@ -37,13 +37,13 @@ public class View {
 	}
 
 	public int showMenu() {
-		int option=0;
-		while (option < 1||option >7) {
+		int option = 0;
+		while (option < 1 || option > 6) {
 			printMessage("Ingrese el numero que corresponda a su opcion a seguir:" + "\n" + "[1] Asignar ID." + "\n"
 					+ "[2] Buscar por Microchip." + "\n" + "[3] Contar por especies." + "\n"
 					+ "[4] Animales peligrosos por localidad." + "\n"
 					+ "[5] Buscar por las siguientes características: Sexo, Especie, Tamaño y Peligro." + "\n"
-					+ "[6] Cargar Datos." + "\n" + "[7] Finalizar programa.");
+					+ "[6] Finalizar programa.");
 			option = captureNumber(null);
 
 		}
