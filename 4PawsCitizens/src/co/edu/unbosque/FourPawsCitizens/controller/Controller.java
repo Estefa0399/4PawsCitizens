@@ -13,7 +13,7 @@ public class Controller {
 		view = new View();
 
 		model.generatePet();
-//		view.printMessage(model.uploadData());
+		view.printMessage(model.uploadData());
 		long microchip = 0;
 		int number = 0;
 		String position = "";
