@@ -34,6 +34,7 @@ public class Archivo {
 		}
 		return cadena;
 	}
+	
 
 
 }
