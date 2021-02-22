@@ -17,10 +17,10 @@ public class Manager {
 	}
 
 	public String uploadData() {
-		
+
 		file.readFile();
-		
-		return "“El proceso de carga del archivo ha finalizado";
+
+		return "El proceso de carga del archivo ha finalizado";
 	}
 
 	public void createPet(String pId, long pMicrochip, String pSpecies, String pSex, String pSize,
@@ -32,7 +32,7 @@ public class Manager {
 
 	}
 
-	public void generatePet() {
+	public void generatePet() throws EmptyAtrributeException {
 		String id = "NO_ID";
 		long microchip;
 		String species;
@@ -44,28 +44,30 @@ public class Manager {
 		for (int i = 0; i < file.readFile().size(); i++) {
 
 			String[] partes = file.readFile().get(i).split(";");
+
 			try {
 
 				microchip = Long.parseLong(partes[0]);
 				species = partes[1];
 				sex = partes[2];
 				size = partes[3];
+
 				if (partes[4].trim().toUpperCase().equals("SI")) {
 					potentiallyDangerous = true;
 				} else {
 					potentiallyDangerous = false;
 				}
-				neighborhood = partes[5];
-				if (species.equals("SIN IDENTIFICAR") || sex.equals("SIN IDENTIFICAR") || size.equals("SIN IDENTIFICAR")
-						|| neighborhood.equals("SIN IDENTIFICAR")) {
+				if (partes.length > 5) {
+					neighborhood = partes[5];
+					if (species.equals("SIN IDENTIFICAR") || sex.equals("SIN IDENTIFICAR")
+							|| size.equals("SIN IDENTIFICAR") || neighborhood.equals("SIN IDENTIFICAR")) {
 
-				} else {
-					this.createPet(id, microchip, species, sex, size, potentiallyDangerous, neighborhood);
-
+					} else {
+						this.createPet(id, microchip, species, sex, size, potentiallyDangerous, neighborhood);
+					}
 				}
 
 			} catch (NumberFormatException e) {
-
 			}
 		}
 

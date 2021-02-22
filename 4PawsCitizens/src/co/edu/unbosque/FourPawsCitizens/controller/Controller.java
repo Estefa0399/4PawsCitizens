@@ -1,5 +1,6 @@
 package co.edu.unbosque.FourPawsCitizens.controller;
 
+import co.edu.unbosque.FourPawsCitizens.model.EmptyAtrributeException;
 import co.edu.unbosque.FourPawsCitizens.model.persistence.*;
 import co.edu.unbosque.FourPawsCitizens.view.*;
 
@@ -8,12 +9,13 @@ public class Controller {
 	private Manager model;
 	private View view;
 
-	public Controller() {
+	public Controller() throws EmptyAtrributeException {
 		model = new Manager();
 		view = new View();
 
-		model.generatePet();
 		view.printMessage(model.uploadData());
+		model.generatePet();
+
 		long microchip = 0;
 		int number = 0;
 		String position = "";
@@ -24,8 +26,9 @@ public class Controller {
 		String potentDangerous;
 		String option = "S";
 
+		int a = view.showMenu();
 		while ("S".equals(option.toUpperCase())) {
-			int a = view.showMenu();
+			
 
 			switch (a) {
 			case 1:
