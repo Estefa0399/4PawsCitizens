@@ -138,7 +138,7 @@ public class Manager {
 		int number = 0;
 
 		for (int i = 0; i < alPet.size(); i++) {
-			if (alPet.get(i).getSpecies() == species) {
+			if (alPet.get(i).getSpecies() == species.toUpperCase()) {
 
 				number++;
 

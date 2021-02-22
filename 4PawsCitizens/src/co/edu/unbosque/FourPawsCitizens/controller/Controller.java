@@ -13,7 +13,7 @@ public class Controller {
 		model = new Manager();
 		view = new View();
 
-		view.printMessage(model.uploadData());
+		view.printMessage(model.uploadData()+ "\nAdvertencia. Este proceso tarda unos minutos.");
 		model.generatePet();
 
 		long microchip = 0;
@@ -25,10 +25,9 @@ public class Controller {
 		String size;
 		String potentDangerous;
 		String option = "S";
-
-		int a = view.showMenu();
+		
 		while ("S".equals(option.toUpperCase())) {
-			
+		int a = view.showMenu();		
 
 			switch (a) {
 			case 1:
