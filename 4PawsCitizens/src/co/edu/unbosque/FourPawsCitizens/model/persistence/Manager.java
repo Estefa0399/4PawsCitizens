@@ -16,6 +16,15 @@ public class Manager {
 		alPet = new ArrayList<Pet>();
 	}
 
+	public void handleException(String attribute) throws EmptyAttributeException {
+		if (attribute.equals("SIN IDENTIFICAR")) {
+			throw new EmptyAttributeException();
+		}
+		if (attribute.isEmpty()) {
+			throw new EmptyAttributeException();
+		}
+	}
+
 	public String uploadData() {
 
 		file.readFile();
@@ -32,7 +41,7 @@ public class Manager {
 
 	}
 
-	public void generatePet() throws EmptyAtrributeException {
+	public void generatePet(){
 		String id = "NO_ID";
 		long microchip;
 		String species;
@@ -59,15 +68,17 @@ public class Manager {
 				}
 				if (partes.length > 5) {
 					neighborhood = partes[5];
-					if (species.equals("SIN IDENTIFICAR") || sex.equals("SIN IDENTIFICAR")
-							|| size.equals("SIN IDENTIFICAR") || neighborhood.equals("SIN IDENTIFICAR")) {
+					handleException(size);
+					handleException(neighborhood);
+					handleException(id);
+					handleException(partes[0]);
+					handleException(species);
+					handleException(sex);
+					this.createPet(id, microchip, species, sex, size, potentiallyDangerous, neighborhood);
 
-					} else {
-						this.createPet(id, microchip, species, sex, size, potentiallyDangerous, neighborhood);
-					}
 				}
 
-			} catch (NumberFormatException e) {
+			} catch (NumberFormatException | EmptyAttributeException ec) {
 			}
 		}
 

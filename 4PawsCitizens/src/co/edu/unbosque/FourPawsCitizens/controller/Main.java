@@ -1,10 +1,10 @@
 package co.edu.unbosque.FourPawsCitizens.controller;
 
-import co.edu.unbosque.FourPawsCitizens.model.EmptyAtrributeException;
+import co.edu.unbosque.FourPawsCitizens.model.EmptyAttributeException;
 
 public class Main {
 
-	public static void main(String[] args) throws EmptyAtrributeException {
+	public static void main(String[] args) {
 		Controller controller = new Controller();
 
 	}

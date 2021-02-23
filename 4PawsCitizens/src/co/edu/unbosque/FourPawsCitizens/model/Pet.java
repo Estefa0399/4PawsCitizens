@@ -10,10 +10,7 @@ public class Pet {
 	private boolean potentiallyDangerous;
 	private String neighborhood;
 
-	public Pet() {
-
-	}
-
+	
 	public Pet(String pId, long pMicrochip, String pSpecies, String pSex, String pSize, boolean pPotentiallyDangerous,
 			String pNeighborhood) {
 
