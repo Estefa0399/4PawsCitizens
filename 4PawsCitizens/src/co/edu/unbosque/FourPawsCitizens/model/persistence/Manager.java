@@ -41,7 +41,7 @@ public class Manager {
 
 	}
 
-	public void generatePet(){
+	public void generatePet() {
 		String id = "NO_ID";
 		long microchip;
 		String species;
