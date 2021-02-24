@@ -1,6 +1,7 @@
 package co.edu.unbosque.FourPawsCitizens.model.persistence;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import co.edu.unbosque.FourPawsCitizens.model.*;
 
@@ -85,6 +86,7 @@ public class Manager {
 		boolean potentiallyDangerous;
 		String neighborhood;
 
+		System.out.println(new Date());
 		for (int i = 0; i < file.readFile().size(); i++) {
 
 			String[] partes = file.readFile().get(i).split(";");
@@ -115,6 +117,7 @@ public class Manager {
 
 			} catch (NumberFormatException | EmptyAttributeException ec) {
 			}
+			System.out.println(new Date());
 		}
 
 	}
@@ -249,7 +252,7 @@ public class Manager {
 		}
 		for (int i = 0; i < alNeighborhood.size(); i++) {
 			if (alNeighborhood.get(i).isPotentiallyDangerous() == true) {
-				alDangerous.add(alPet.get(i));
+				alDangerous.add(alNeighborhood.get(i));
 			}
 		}
 
@@ -265,12 +268,14 @@ public class Manager {
 			break;
 
 		case "LAST":
-			for (int i = n; n > i; i--) {
-				aux = aux + "ID: " + alDangerous.get(i).getId() + "\n" + "Species: " + alDangerous.get(i).getSpecies()
-						+ "\n" + "Gender: " + alDangerous.get(i).getSex() + "\n" + "Size: "
-						+ alDangerous.get(i).getSize() + "\n" + "Potentially Dangerous: "
-						+ alDangerous.get(i).isPotentiallyDangerous() + "\n" + "Neighborhood: "
-						+ alDangerous.get(i).getNeighborhood() + "\n" + "--------------------" + "\n";
+			int counter = alDangerous.size() - n;
+			for (int i = 0; i < n; i++) {
+				aux = aux + "ID: " + alDangerous.get(counter).getId() + "\n" + "Species: "
+						+ alDangerous.get(counter).getSpecies() + "\n" + "Gender: " + alDangerous.get(counter).getSex()
+						+ "\n" + "Size: " + alDangerous.get(counter).getSize() + "\n" + "Potentially Dangerous: "
+						+ alDangerous.get(counter).isPotentiallyDangerous() + "\n" + "Neighborhood: "
+						+ alDangerous.get(counter).getNeighborhood() + "\n" + "--------------------" + "\n";
+				counter++;
 			}
 		}
 
