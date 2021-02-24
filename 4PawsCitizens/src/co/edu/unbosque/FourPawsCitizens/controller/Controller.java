@@ -1,14 +1,26 @@
+/**
+ * Librerias Importadas para el funcionamiento del programa
+ */
 package co.edu.unbosque.FourPawsCitizens.controller;
 
 import co.edu.unbosque.FourPawsCitizens.model.EmptyAttributeException;
 import co.edu.unbosque.FourPawsCitizens.model.persistence.*;
 import co.edu.unbosque.FourPawsCitizens.view.*;
-
+/**
+ * 
+ * @author Juanma Perez
+ *
+ */
 public class Controller {
-
+/**
+ * Clase Controller en donde creamos los atributos dados
+ */
 	private Manager model;
 	private View view;
-
+/**
+ *  Metodo controller que sirve constructor de la clase
+ *  
+ **/
 	public Controller()  {
 		model = new Manager();
 		view = new View();

@@ -1,5 +1,9 @@
 package co.edu.unbosque.FourPawsCitizens.model;
-
+/**
+ * 
+ * @author Juanma Perez
+ *
+ */
 public class Pet {
 
 	private String id;
@@ -10,8 +14,18 @@ public class Pet {
 	private boolean potentiallyDangerous;
 	private String neighborhood;
 
-	
-	public Pet(String pId, long pMicrochip, String pSpecies, String pSex, String pSize, boolean pPotentiallyDangerous,
+/**
+ * Metodo publico Pet que sirve constructor de la clase
+ * 
+ * @param pId
+ * @param pMicrochip
+ * @param pSpecies
+ * @param pSex
+ * @param pSize
+ * @param pPotentiallyDangerous
+ * @param pNeighborhood
+ */
+public Pet(String pId, long pMicrochip, String pSpecies, String pSex, String pSize, boolean pPotentiallyDangerous,
 			String pNeighborhood) {
 
 		this.id = pId;
