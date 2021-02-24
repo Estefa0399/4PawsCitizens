@@ -10,12 +10,23 @@ public class Manager {
 	private ArrayList<Pet> alPet;
 	private Archivo file;
 
+	/**
+	 * @author Estefania Galindo Constructor de la clase
+	 * @param archivo
+	 */
 	public Manager() {
 
 		file = new Archivo();
 		alPet = new ArrayList<Pet>();
 	}
 
+	/**
+	 * @author Juana Torres Este metodo void se encarga de manejar la exepcion
+	 *         'EmptyAttributeException'
+	 * 
+	 * @param attribute
+	 * @throws EmptyAttributeException
+	 */
 	public void handleException(String attribute) throws EmptyAttributeException {
 		if (attribute.equals("SIN IDENTIFICAR")) {
 			throw new EmptyAttributeException();
@@ -25,12 +36,31 @@ public class Manager {
 		}
 	}
 
+	/**
+	 * @author Estefania Galindo Este método String sirve para cargar el archivo CSV
+	 *         <b>pre</b> la clase archivo ha sido inicializada con la variable file
+	 * @return mensaje "El proceso de carga del archivo ha finalizado"
+	 */
 	public String uploadData() {
 
 		file.readFile();
 
 		return "El proceso de carga del archivo ha finalizado";
 	}
+
+	/**
+	 * @author Estefania Galindo, Juana Torres este metodo void sirve para crear un
+	 *         objeto de la clase Pet y guardarlo en un ArrayList
+	 * @param pId
+	 * @param pMicrochip
+	 * @param pSpecies
+	 * @param pSex
+	 * @param pSize
+	 * @param pPotentiallyDangerous
+	 * @param pNeighborhood         <b>pre</b> el ArrayList a utilizar ha sido
+	 *                              inicializado <b>post</b> objeto Pet guardado en
+	 *                              el ArrayList
+	 */
 
 	public void createPet(String pId, long pMicrochip, String pSpecies, String pSex, String pSize,
 			boolean pPotentiallyDangerous, String pNeighborhood) {
@@ -41,6 +71,11 @@ public class Manager {
 
 	}
 
+	/**
+	 * @author Estefania Galindo, Juana Torres Este metodo void se encarga de
+	 *         guardar los objetos Pet sin ";" usando el metodo createPet <b>pre</b>
+	 *         se ha cargado el archivo <b>post</b> ArrayList con los objetos Pet
+	 */
 	public void generatePet() {
 		String id = "NO_ID";
 		long microchip;
@@ -84,6 +119,14 @@ public class Manager {
 
 	}
 
+	/**
+	 * @author Estefania Galindo este metodo String se encarga de asignar los ID's a
+	 *         los objeto Pet guardados en un ArrayList previamente <b>pre</b> el
+	 *         archivo se ha cargado <b>pre</b> se han generado los objetos Pet y
+	 *         guardado en un ArrayList
+	 * 
+	 * @return mensaje "El proceso de asignación de ID's ha finalizado"
+	 */
 	public String assignID() {
 		String aux;
 		for (int i = 0; i < alPet.size(); i++) {
@@ -121,6 +164,13 @@ public class Manager {
 		return "El proceso de asignación de ID's ha finalizado";
 	}
 
+	/**
+	 * @author Estefania Galindo, Juana Torres Este metodo boolean sirve para
+	 *         verificar que los ID's que se crearon no sean repetidos <b>pre</b> se
+	 *         han generado los ID's con el metodo anterios
+	 * @param id
+	 * @return variable aux con el resultado del proceso
+	 */
 	public boolean verificateID(String id) {
 		boolean aux = false;
 		for (int i = 0; i < alPet.size(); i++) {
@@ -131,6 +181,14 @@ public class Manager {
 		return aux;
 	}
 
+	/**
+	 * @author Estefania Galindo, Juan Manuel Perez este método String sirve para
+	 *         buscar un objeto Pet con el parametro solicitado <b>pre</b> se han
+	 *         generado los ID's y se han verificado
+	 * 
+	 * @param microchip
+	 * @return variable aux con el resultado del proceso
+	 */
 	public String findByMicrochip(long microchip) {
 		String aux = "Pet not found";
 
@@ -145,6 +203,14 @@ public class Manager {
 		return aux;
 	}
 
+	/**
+	 * @author Estefania Galindo, Juan Manuel Perez Este método String sirve para
+	 *         contar los objetos Pet por el parametro dado <b>pre </b> Se ha
+	 *         cargado el archivo y generado los objetos Pet
+	 * @param species
+	 * @return mensaje "El número de animales de la especie " + species + " es: " +
+	 *         number
+	 */
 	public String countBySpecies(String species) {
 		int number = 0;
 
@@ -156,14 +222,23 @@ public class Manager {
 			}
 		}
 
-		return "“El número de animales de la especie " + species + " es: " + number;
+		return "El número de animales de la especie " + species + " es: " + number;
 
 	}
 
+	/**
+	 * @author Estefania Galindo Este método String sirve para encontrar n numeros
+	 *         de objetos Pet segun los parametros dados <b>pre</b> Se ha cargado el
+	 *         archivo y generado los objetos Pet
+	 * @param n
+	 * @param position
+	 * @param neighborhood
+	 * @return variable aux con el resultado del proceso
+	 */
 	public String findBypotentDangerousInNeighborhood(int n, String position, String neighborhood) {
 		String aux = "";
-		ArrayList<Pet> alNeighborhood = new ArrayList();
-		ArrayList<Pet> alDangerous = new ArrayList();
+		ArrayList<Pet> alNeighborhood = new ArrayList<Pet>();
+		ArrayList<Pet> alDangerous = new ArrayList<Pet>();
 
 		for (int i = 0; i < alPet.size(); i++) {
 			if (alPet.get(i).getNeighborhood().toUpperCase() == neighborhood.toUpperCase()) {
@@ -200,6 +275,17 @@ public class Manager {
 		return aux;
 	}
 
+	/**
+	 * @author Estefania Galindo, Juan Manuel Perez Este método String sirve para
+	 *         buscar objetos Pet segun los parametros dados <b>pre</b> Se ha
+	 *         cargado el archivo, generado los objetos Pet y se han asignado los
+	 *         ID's
+	 * @param sex
+	 * @param species
+	 * @param size
+	 * @param potentDangerous
+	 * @return variable aux2 con el resultado del proceso
+	 */
 	public String findByMultipleFields(String sex, String species, String size, String potentDangerous) {
 		String aux1 = "";
 		String aux2 = "";
