@@ -190,6 +190,7 @@ public class Manager {
 	 * @return variable aux con el resultado del proceso
 	 */
 	public String findByMicrochip(long microchip) {
+		this.generatePet();
 		String aux = "Pet not found";
 
 		if (!alPet.isEmpty()) {
@@ -215,7 +216,7 @@ public class Manager {
 		int number = 0;
 
 		for (int i = 0; i < alPet.size(); i++) {
-			if (alPet.get(i).getSpecies() == species.toUpperCase()) {
+			if (alPet.get(i).getSpecies().equals(species.toUpperCase())) {
 
 				number++;
 
@@ -237,11 +238,12 @@ public class Manager {
 	 */
 	public String findBypotentDangerousInNeighborhood(int n, String position, String neighborhood) {
 		String aux = "";
+		this.generatePet();
 		ArrayList<Pet> alNeighborhood = new ArrayList<Pet>();
 		ArrayList<Pet> alDangerous = new ArrayList<Pet>();
 
 		for (int i = 0; i < alPet.size(); i++) {
-			if (alPet.get(i).getNeighborhood().toUpperCase() == neighborhood.toUpperCase()) {
+			if (alPet.get(i).getNeighborhood().toUpperCase().equals(neighborhood.toUpperCase())) {
 				alNeighborhood.add(alPet.get(i));
 			}
 		}
@@ -289,7 +291,7 @@ public class Manager {
 	public String findByMultipleFields(String sex, String species, String size, String potentDangerous) {
 		String aux1 = "";
 		String aux2 = "";
-
+		this.assignID();
 		String sp = (species).substring(0, 1).toUpperCase();
 		aux1 = aux1 + sp;
 		String se = (sex).substring(0, 1).toUpperCase();
