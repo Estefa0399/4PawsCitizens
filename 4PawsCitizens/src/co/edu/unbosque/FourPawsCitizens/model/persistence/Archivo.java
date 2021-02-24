@@ -2,7 +2,6 @@ package co.edu.unbosque.FourPawsCitizens.model.persistence;
 
 import java.io.*;
 import java.util.ArrayList;
-import co.edu.unbosque.FourPawsCitizens.model.*;
 
 public class Archivo {
 
@@ -13,6 +12,11 @@ public class Archivo {
 		filePet = new File(route);
 
 	}
+	/** 
+	 * @author Juana Valentina Torres Parrado
+	 * 
+	 * Método que lee el archivo CSV y lo retorna en un ArrayList<String>
+	 */
 
 	public ArrayList<String> readFile() {
 

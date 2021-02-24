@@ -9,10 +9,23 @@ public class View {
 		read = new Scanner(System.in);
 	}
 
+	/**
+	 * @author Juana Valentina Torres Parrado
+	 * 
+	 *         Método void que imprime en consola un string
+	 * @param String m
+	 * 
+	 */
 	public void printMessage(String m) {
 		System.out.println(m);
 	}
 
+	/**
+	 * @author Juana Valentina Torres Parrado
+	 * 
+	 *Metodo que retorna un número entero (int) capturado de lo ingresado en la consola         
+	 * @param String m
+	 */
 	public int captureNumber(String m) {
 		int resultado = 0;
 
@@ -28,6 +41,11 @@ public class View {
 		return resultado;
 	}
 
+	/**
+	 * @author Juana Valentina Torres Parrado
+	 * Metodo que retorna String capturado de lo ingresado en la consola 
+	 * @param String m
+	 */
 	public String captureData(String m) {
 		String resultado = "";
 		m = read.nextLine();
@@ -36,6 +54,12 @@ public class View {
 
 	}
 
+	/**
+	 * @author Juana Valentina Torres Parrado y Estefania Galindo Merchan
+	 * 
+	 * Metodo que muestra un menu
+	 * que retorna un numero entero (int) capturado de la consola
+	 */
 	public int showMenu() {
 		int option = 0;
 		while (option < 1 || option > 6) {
