@@ -3,9 +3,8 @@
  */
 package co.edu.unbosque.FourPawsCitizens.controller;
 
-import co.edu.unbosque.FourPawsCitizens.model.EmptyAttributeException;
-import co.edu.unbosque.FourPawsCitizens.model.persistence.*;
-import co.edu.unbosque.FourPawsCitizens.view.*;
+import co.edu.unbosque.FourPawsCitizens.model.persistence.Manager;
+import co.edu.unbosque.FourPawsCitizens.view.View;
 /**
  * 
  * @author Juanma Perez

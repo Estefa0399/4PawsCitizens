@@ -1,9 +1,9 @@
 package co.edu.unbosque.FourPawsCitizens.model.persistence;
 
 import java.util.ArrayList;
-import java.util.Date;
 
-import co.edu.unbosque.FourPawsCitizens.model.*;
+import co.edu.unbosque.FourPawsCitizens.model.EmptyAttributeException;
+import co.edu.unbosque.FourPawsCitizens.model.Pet;
 
 public class Manager {
 
@@ -86,7 +86,6 @@ public class Manager {
 		boolean potentiallyDangerous;
 		String neighborhood;
 
-		System.out.println(new Date());
 		for (int i = 0; i < file.readFile().size(); i++) {
 
 			String[] partes = file.readFile().get(i).split(";");
@@ -117,7 +116,7 @@ public class Manager {
 
 			} catch (NumberFormatException | EmptyAttributeException ec) {
 			}
-			System.out.println(new Date());
+
 		}
 
 	}
@@ -296,9 +295,9 @@ public class Manager {
 	public String findByMultipleFields(String sex, String species, String size, String potentDangerous) {
 		String aux1 = "";
 		String aux2 = "";
-		this.assignID();
+
 		String sp = (species).substring(0, 1).toUpperCase();
-		aux1 = aux1 + sp;
+		aux1 = sp;
 		String se = (sex).substring(0, 1).toUpperCase();
 		aux1 = aux1 + se;
 		String si;
@@ -318,7 +317,8 @@ public class Manager {
 
 		for (int i = 0; i < alPet.size(); i++) {
 			String id = alPet.get(i).getId();
-			if (id.substring(4, 9).equals(aux1)) {
+			String[] partes = id.split("-");
+			if (partes[1].equals(aux1)) {
 
 				aux2 = aux2 + alPet.get(i).getId() + "\n";
 			}
