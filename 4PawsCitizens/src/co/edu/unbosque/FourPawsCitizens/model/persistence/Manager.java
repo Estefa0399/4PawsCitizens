@@ -192,7 +192,6 @@ public class Manager {
 	 * @return variable aux con el resultado del proceso
 	 */
 	public String findByMicrochip(long microchip) {
-		this.generatePet();
 		String aux = "Pet not found";
 
 		if (!alPet.isEmpty()) {
@@ -240,7 +239,6 @@ public class Manager {
 	 */
 	public String findBypotentDangerousInNeighborhood(int n, String position, String neighborhood) {
 		String aux = "";
-		this.generatePet();
 		ArrayList<Pet> alNeighborhood = new ArrayList<Pet>();
 		ArrayList<Pet> alDangerous = new ArrayList<Pet>();
 
@@ -277,7 +275,9 @@ public class Manager {
 				counter++;
 			}
 		}
-
+		if (aux.equals("")) {
+			aux = "No se encontraron animales.";
+		}
 		return aux;
 	}
 
@@ -323,7 +323,9 @@ public class Manager {
 				aux2 = aux2 + alPet.get(i).getId() + "\n";
 			}
 		}
-
+		if (aux2.equals("")) {
+			aux2 = "No se encontraron animales";
+		}
 		return aux2;
 	}
 
