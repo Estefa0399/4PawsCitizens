@@ -295,7 +295,7 @@ public class Manager {
 	public String findByMultipleFields(String sex, String species, String size, String potentDangerous) {
 		String aux1 = "";
 		String aux2 = "";
-
+		assignID();
 		String sp = (species).substring(0, 1).toUpperCase();
 		aux1 = sp;
 		String se = (sex).substring(0, 1).toUpperCase();
